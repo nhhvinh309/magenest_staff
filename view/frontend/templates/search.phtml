@@ -1,0 +1,29 @@
+<form name="form_search" method="post">
+    <input type="text" name="search">
+    <input type="submit">
+</form>
+
+<script>
+    require(['jquery'], function () {
+        jQuery(document).ready(function () {
+            jQuery("#form_search").submit(function (e) {
+                e.preventDefault();
+                var searchValue = jQuery("input[name='search']").val();
+                jQuery.ajax({
+                    type: "POST",
+                    data: {search: searchValue},
+                });
+            });
+        });
+    });
+</script>
+
+<?php
+if(isset($_POST['search']))
+{
+    echo $block->searchStaff($_POST["search"]);
+}
+
+?>
+
+

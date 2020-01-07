@@ -1,0 +1,20 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="staff_mageneststaff_listing_data_source" xsi:type="string">Magenest\Staff\Model\ResourceModel\MagenestStaff\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magenest\Staff\Model\ResourceModel\MagenestStaff\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_staff</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Staff\Model\ResourceModel\MagenestStaff</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Catalog\Block\Product\ListProduct" shared="false">
+        <plugin name="magenest_staff_product_list_text" type="Magenest\Staff\Plugin\ProductListPlugin" disabled="false" />
+    </type>
+
+</config>

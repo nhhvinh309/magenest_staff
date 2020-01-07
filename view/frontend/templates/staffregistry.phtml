@@ -1,0 +1,35 @@
+<h1> Update Your Profile</h1>
+
+<h3>Profile Status</h3>
+<form name="form_staff_registry" method="post">
+    <span> Staff type</span>
+    <input type="number" name="stafftype">
+    <span> Nick Name </span>
+    <input type="text" name="nickname">
+    <input type="submit">
+</form>
+
+<script>
+    require(['jquery'], function () {
+        jQuery(document).ready(function () {
+            jQuery("#form_staff_registry").submit(function () {
+                var staffType = jQuery("input[name='stafftype']").val();
+                var nickName = jQuery("input[name='nickname']").val();
+                jQuery.ajax({
+                    type: "POST",
+                    data: {staffType: staffType, nickName: nickName}
+                });
+            });
+        });
+    });
+</script>
+
+<?php
+if(isset($_POST['stafftype']) && isset($_POST['nickname']))
+{
+    echo $block->staffRegistry($_POST["stafftype"], $_POST["nickname"]);
+}
+
+?>
+
+
